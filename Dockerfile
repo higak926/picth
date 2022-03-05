@@ -1,6 +1,11 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y nodejs mysql-client
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    nodejs \
+    default-mysql-client \
+    yarn
 WORKDIR /picth
 COPY Gemfile /picth/Gemfile
 COPY Gemfile.lock /picth/Gemfile.lock
